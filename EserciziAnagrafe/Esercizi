@@ -13,3 +13,9 @@ from Persona as pf join Genia as g on pf.Nome = g.Figlio
     join Persona as pg on pg.nome = g.Genitore
 where pf.CittàNascita = pg.CittàNascita;
 
+/*Query 3
+Città in cui è nato almeno un genitore di oltre 50 anni*/
+
+select distinct Persona.CittàNascita, Persona.Nome 
+from Persona join Genia on Persona.Nome = Genia.Genitore
+where Persona.Età >= 50 
