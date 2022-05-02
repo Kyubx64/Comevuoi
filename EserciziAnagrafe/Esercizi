@@ -19,3 +19,9 @@ Città in cui è nato almeno un genitore di oltre 50 anni*/
 select distinct Persona.CittàNascita, Persona.Nome 
 from Persona join Genia on Persona.Nome = Genia.Genitore
 where Persona.Età >= 50 
+
+/*Query 4
+vogliamo sapere chi sono i nonni*/
+
+select distinct F.Genitore
+from Genia F join Genia G on G.Genitore = F.Figlio
