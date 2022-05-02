@@ -1,0 +1,6 @@
+/*Query 1
+persone maggiorenni, con nome e regione di nascita*/
+
+select Persona.Nome, Città.Regione
+from Persona left join Città on Persona.CittàNascita = Città.Nome
+where Persona.Età >= 18;
