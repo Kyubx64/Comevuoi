@@ -43,7 +43,8 @@ where programma.Linguaggio = "Python" and autore.codice != a1.codice and autore.
 Calcolare il codice ed il nome dei programmatori che hanno
 scritto solo programmi Java.*/
 
-select programmatore.codice, programmatore.nome
-from autore join programmatore on autore.codice = programmatore.codice
-    join programma on programma.id = autore.id
+select *
+from autore join programmatore on autore.Codice = programmatore.codice
+    join programma on programma.ID = autore.ID
 where programma.Linguaggio = "Java" 
+group by programma.Linguaggio
