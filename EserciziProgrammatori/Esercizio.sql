@@ -37,3 +37,13 @@ select distinct autore.codice as autore, a1.codice as coautore
 from autore join programma on programma.id = autore.id
     join autore as a1 on a1.id = programma.id
 where programma.Linguaggio = "Python" and autore.codice != a1.codice and autore.codice < a1.codice
+
+
+/*Query 5
+Calcolare il codice ed il nome dei programmatori che hanno
+scritto solo programmi Java.*/
+
+select programmatore.codice, programmatore.nome
+from autore join programmatore on autore.codice = programmatore.codice
+    join programma on programma.id = autore.id
+where programma.Linguaggio = "Java" 
