@@ -61,3 +61,12 @@ from autore join programmatore on autore.codice = programmatore.codice
     join programma on programma.id = autore.id
 where programma.anno
 group by programmatore.codice
+
+
+/*Query 7
+Per ogni linguaggio calcolare quanti sono in media gli
+autori dei programmi scritti in quel linguaggio.*/
+
+select programma.linguaggio, count (autore.codice) as media
+from programma join autore on programma.id = autore.id
+group by programma.linguaggio
