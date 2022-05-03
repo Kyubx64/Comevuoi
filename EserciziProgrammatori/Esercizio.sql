@@ -28,3 +28,12 @@ select distinct programmatore.codice, programma.anno
 from autore join programmatore on autore.codice = programmatore.codice
     join programma on programma.id = autore.id
 where programmatore.categoria = 10 and programma.linguaggio != "Java"
+
+/*Query 4
+Calcolare le coppie dei codici di programmatori che sono stati
+coautori di almeno un programma scritto in Python.*/
+
+select distinct autore.codice as autore, a1.codice as coautore
+from autore join programma on programma.id = autore.id
+    join autore as a1 on a1.id = programma.id
+where programma.Linguaggio = "Python" and autore.codice != a1.codice and autore.codice < a1.codice
