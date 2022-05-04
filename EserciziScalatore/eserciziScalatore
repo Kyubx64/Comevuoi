@@ -1,0 +1,8 @@
+/*Query 1
+Calcolare l'insieme (non il multi-insieme) delle coppie (A,B)
+tali che A è uno scalatore e B è un continente in cui A ha
+effettuato una scalata.*/
+
+select scalata.scalatore, nazione.continente 
+from nazione join scalata on scalata.nazione = nazione.nome 
+order by scalata.scalatore
