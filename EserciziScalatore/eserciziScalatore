@@ -6,3 +6,16 @@ effettuato una scalata.*/
 select scalata.scalatore, nazione.continente 
 from nazione join scalata on scalata.nazione = nazione.nome 
 order by scalata.scalatore
+
+/*Query 2
+Per ogni scalatore nato prima del 1980, calcolare
+tutti i continenti in cui ha effettuato una scalata,
+ordinando il risultato per codice fiscale e, a parità di
+codice fiscale, per il nome del continente.*/
+
+
+select scalata.scalatore, nazione.continente 
+from nazione join scalata on scalata.nazione = nazione.nome 
+    join scalatore on scalatore.nazioneNascita = nazione.nome
+where scalatore.annoNascita < 1980
+order by scalata.scalatore, nazione.continente
