@@ -53,3 +53,17 @@ from scalatore join scalata on scalatore.cf = scalata.scalatore
    join nazione n1 on n1.nome = scalatore.nazioneNascita
 where n1.continente != "America" 
 
+
+/*Query 7
+Per ogni nazione e per ogni anno, calcolare il numero di
+scalate effettuate in quella nazione e in quell’anno, ma solo se
+tale numero è maggiore di 1. Nel risultato le nazioni dello
+stesso continente devono essere mostrati in tuple contigue, e
+le tuple relative allo stesso continente devono essere ordinate
+per anno.*/
+
+select scalata.anno, scalata.nazione, count(scalata.nazione and scalata.anno) as numeroScalate
+from scalatore join scalata on scalatore.cf = scalata.scalatore
+    join nazione on nazione.nome = scalata.nazione
+group by scalata.anno, scalata.nazione having count(*) > 1
+order by scalata.anno
