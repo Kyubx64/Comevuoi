@@ -51,5 +51,5 @@ select scalatore.cf, scalatore.nazioneNascita, n1.continente as continenteNascit
 from scalatore join scalata on scalatore.cf = scalata.scalatore
    left join nazione on nazione.nome = scalata.nazione
    join nazione n1 on n1.nome = scalatore.nazioneNascita
-where nazione.continente != "America" 
+where n1.continente != "America" 
 
