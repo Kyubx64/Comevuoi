@@ -19,3 +19,13 @@ from nazione join scalata on scalata.nazione = nazione.nome
     join scalatore on scalatore.nazioneNascita = nazione.nome
 where scalatore.annoNascita < 1980
 order by scalata.scalatore, nazione.continente
+
+/*Query 3
+Calcolare le nazioni (mostrando, per ciascuna, anche il
+continente) nelle quali è stata effettuata almeno una scalata
+da uno scalatore minorenne.*/
+
+select nazione.nome, nazione.continente 
+from scalatore join scalata on scalatore.cf = scalata.scalatore
+    join nazione on nazione.nome = scalata.nazione
+where (scalata.anno - scalatore.annoNascita) < 18
