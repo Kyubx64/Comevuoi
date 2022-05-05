@@ -40,6 +40,12 @@ from scalatore join scalata on scalatore.cf = scalata.scalatore
 where scalatore.nazioneNascita = scalata.nazione
 group by nazione.nome
 
+/*Query 5
+Per ogni continente, calcolare il numero di scalate effettuate
+da scalatori nati in una nazione di quel continente.*/
+
+
+
 /*Query 6
 Calcolare codice fiscale, nazione di nascita, continente di
 nascita di ogni scalatore nato in un continente diverso
@@ -68,7 +74,6 @@ group by scalata.anno, scalata.nazione having count(*) > 1
 order by scalata.anno
 
 /*Query 8
-
 Per ogni nazione N, calcolare il numero medio di
 scalate effettuate all’anno in N da scalatori nati in
 nazioni diverse da N.*/
@@ -76,3 +81,15 @@ nazioni diverse da N.*/
 select scalata.nazione, count(*)/count(scalata.anno) as Media 
 from Scalatore join Scalata on scalatore.cf = scalata.scalatore 
 where scalatore.nazioneNascita != scalata.nazione 
+
+/*Query 9
+Calcolare gli scalatori tali che tutte le scalate che
+hanno effettuato nella nazione di nascita le hanno
+effettuate quando erano minorenni.*/
+
+select distinct scalatore.cf, scalatore.annoNascita, scalata.anno
+from Scalatore join Scalata on scalatore.cf = scalata.scalatore 
+where scalatore.nazioneNascita 
+    in (select scalata.nazione 
+         from scalata 
+         where (scalata.anno - scalatore.annoNascita) < 18 );
