@@ -14,11 +14,11 @@ ordinando il risultato per codice fiscale e, a parità di
 codice fiscale, per il nome del continente.*/
 
 
-select scalata.scalatore, nazione.continente 
-from nazione join scalata on scalata.nazione = nazione.nome 
-    join scalatore on scalatore.nazioneNascita = nazione.nome
+select nazione.continente, scalatore.cf
+from scalatore join scalata on scalatore.cf = scalata.scalatore
+    join nazione on nazione.nome = scalata.nazione
 where scalatore.annoNascita < 1980
-order by scalata.scalatore, nazione.continente
+order by scalatore.cf, nazione.continente
 
 /*Query 3
 Calcolare le nazioni (mostrando, per ciascuna, anche il
@@ -52,7 +52,6 @@ from scalatore join scalata on scalatore.cf = scalata.scalatore
    left join nazione on nazione.nome = scalata.nazione
    join nazione n1 on n1.nome = scalatore.nazioneNascita
 where n1.continente != "America" 
-
 
 /*Query 7
 Per ogni nazione e per ogni anno, calcolare il numero di
